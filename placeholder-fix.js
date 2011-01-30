@@ -1,5 +1,5 @@
 ﻿/*!
-* placeholderFix v1.0
+* placeholder-fix v1.0
 *
 * Dependencies:
 * - jQuery
