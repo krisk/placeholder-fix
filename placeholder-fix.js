@@ -1,4 +1,4 @@
-﻿/*!
+/*!
 * placeholder-fix v1.0
 *
 * Dependencies:
@@ -10,7 +10,7 @@
 * Date: Jan 28 10:00:00 2011
 */
 (function ($) {
-    $(document).ready(function () {
+    $(function () {
         // Check if browser supports the placeholder attribute
         if ('placeholder' in document.createElement('input')) {
             return;
@@ -22,27 +22,29 @@
         // Find all the elements of input type="text" and textareas
         $.each($('input[type=text], textarea'), function (index, elem) {
 
-            var elem = $(elem);
-            var placeholder = elem.attr('placeholder');
+            var $elem = $(elem),
+                $placeholder = $elem.attr('placeholder');
 
             if (typeof placeholder !== 'undefined' && placeholder.length > 0) {
-                if (elem.val().length === 0) {
-                    elem
+              
+                if ($elem.val().length === 0) {
+                    $elem
                         .addClass('watermark')
                         .val(placeholder);
                 }
-                elem
+
+                $elem
                     .focus(function () {
-                        if (this.value == placeholder) {
-                            $(this)
+                        if ($elem.val() == placeholder) {
+                            $elem
                                 .val('')
                                 .removeClass('watermark');
 
                         }
                     })
                     .blur(function () {
-                        if (this.value.length === 0) {
-                            $(this)
+                        if ($elem.val().length === 0) {
+                            $elem
                                 .addClass('watermark')
                                 .val(placeholder);
                         }
