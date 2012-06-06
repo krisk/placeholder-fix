@@ -30,6 +30,10 @@
     }
 
     $.fn.placeholderFix = function() {
+        if (placeholderSupported) {
+            return $(this);
+        }
+        
         return $(this).each(function() {
             placeholderFix.call(this);
         });
